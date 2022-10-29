@@ -1,4 +1,5 @@
 ﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using Xunit;
 
 namespace ImGui.UnitTest
@@ -14,8 +15,8 @@ namespace ImGui.UnitTest
         [Fact]
         public void CompareIdenticalImage()
         {
-            var imageA = Image.Load("Util/images/logo.png");
-            var imageB = Image.Load("Util/images/logo.png");
+            var imageA = Image.Load<Rgba32>("Util/images/logo.png");
+            var imageB = Image.Load<Rgba32>("Util/images/logo.png");
             var result = Util.CompareImage(imageA, imageB);
             Assert.True(result);
         }
@@ -23,8 +24,8 @@ namespace ImGui.UnitTest
         [Fact]
         public void CompareSightlyDifferentImage()
         {
-            var imageA = Image.Load("Util/images/logo.png");
-            var imageB = Image.Load("Util/images/logo_diff.png");
+            var imageA = Image.Load<Rgba32>("Util/images/logo.png");
+            var imageB = Image.Load<Rgba32>("Util/images/logo_diff.png");
             var result = Util.CompareImage(imageA, imageB);
             Assert.True(result);
         }
@@ -32,8 +33,8 @@ namespace ImGui.UnitTest
         [Fact]
         public void CompareCompletelyDifferentImage()
         {
-            var imageA = Image.Load("Util/images/logo.png");
-            var imageB = Image.Load("Util/images/logo_mess.png");
+            var imageA = Image.Load<Rgba32>("Util/images/logo.png");
+            var imageB = Image.Load<Rgba32>("Util/images/logo_mess.png");
             var result = Util.CompareImage(imageA, imageB);
             Assert.False(result);
         }

@@ -5,7 +5,7 @@ namespace ImGui.OSAbstraction.Text
     /// <summary>
     /// Text-related(layout, hit-test, etc.) functions
     /// </summary>
-    internal interface ITextContext : IDisposable
+    public interface ITextContext : IDisposable
     {
         /// <summary>
         /// size of the font in the text

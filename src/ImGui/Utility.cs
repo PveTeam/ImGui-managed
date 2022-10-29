@@ -143,7 +143,7 @@ namespace ImGui
             }
             else//windows
             {
-                var s = new FileStream(filePath, FileMode.Open);
+                var s = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                 stream = s;
             }
             return stream;

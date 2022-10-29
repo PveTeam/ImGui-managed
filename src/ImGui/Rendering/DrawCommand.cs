@@ -2,7 +2,7 @@
 
 namespace ImGui
 {
-    internal struct DrawCommand
+    public struct DrawCommand
     {
         /// <summary>
         /// Number of indices (multiple of 3) to be rendered as triangles.

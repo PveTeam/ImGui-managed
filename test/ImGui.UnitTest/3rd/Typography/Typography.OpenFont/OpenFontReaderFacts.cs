@@ -107,7 +107,7 @@ namespace ImGui.UnitTest
                     //surface.WriteToPng($"{Util.OutputPath}\\GlyphReaderFacts.TheReadMethod.Read_{fontFileName}_{character}.png");
 
                     var image = Image.LoadPixelData<Bgra32>(Configuration.Default, surface.Data, surface.Width, surface.Height);
-                    var expectedImage = Image.Load(expectedImageFilePath);
+                    var expectedImage = Image.Load<Rgba32>(expectedImageFilePath);
                     Assert.True(Util.CompareImage(expectedImage, image));
                 }
             }

@@ -3,7 +3,7 @@ using ImGui.Internal;
 
 namespace ImGui
 {
-    internal class GlyphData
+    public class GlyphData
     {
         public char Character;
         public string FontFamily;

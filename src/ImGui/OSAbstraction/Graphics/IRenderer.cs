@@ -7,7 +7,7 @@ namespace ImGui.OSAbstraction.Graphics
     /// Renderer-related functions
     /// </summary>
     /// <remarks>Renderers should implement this.</remarks>
-    internal interface IRenderer
+    public interface IRenderer
     {
         /// <summary>
         /// Initialize the renderer

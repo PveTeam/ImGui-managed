@@ -12,6 +12,11 @@ namespace ImGui.UnitTest
         {
         }
 
+        public void LoadImage(byte[] data, int width, int height)
+        {
+            
+        }
+
         public void LoadImage(string filePath)
         {
         }

@@ -51,12 +51,12 @@ namespace CSharpGL.Objects.Shaders
             if (this.vertexShader.GetCompileStatus() == false)
             {
                 string log = this.vertexShader.GetInfoLog();
-                throw new Exception(log);
+                throw new ShaderCompilationException($"Failed to compile shader program with ID {vertexShader.ShaderObject}", log);
             }
             if (this.fragmentShader.GetCompileStatus() == false)
             {
                 string log = this.fragmentShader.GetInfoLog();
-                throw new Exception(log);
+                throw new ShaderCompilationException($"Failed to compile shader program with ID {fragmentShader.ShaderObject}", log);
             }
 
             // Now that the shaders have been linked to the program, they can be released.

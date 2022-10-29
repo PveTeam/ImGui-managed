@@ -5,7 +5,7 @@ namespace ImGui.OSAbstraction.Window
     /// <summary>
     /// window-related functions
     /// </summary>
-    internal interface IWindow
+    public interface IWindow
     {
         /// <summary>
         /// Platform specific handle related to the window.

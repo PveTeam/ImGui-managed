@@ -3,7 +3,7 @@
 namespace ImGui
 {
     [Flags]
-    internal enum WindowTypes
+    public enum WindowTypes
     {
         Regular,
         ClientAreaOnly,

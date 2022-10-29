@@ -1,6 +1,5 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Primitives;
 using SixLabors.ImageSharp.Processing;
 using System;
 
@@ -16,8 +15,8 @@ namespace ImageSharp.Extension
         const float DefaultImageThreshold = 0f;
 
         public static void VisualComparer<TColorA, TColorB>(Image<TColorA> expected, Image<TColorB> actual, float imageTheshold = DefaultImageThreshold, byte segmentThreshold = DefaultSegmentThreshold, int scalingFactor = DefaultScalingFactor)
-           where TColorA : struct, IPixel<TColorA>
-           where TColorB : struct, IPixel<TColorB>
+           where TColorA : unmanaged, IPixel<TColorA>
+           where TColorB : unmanaged, IPixel<TColorB>
         {
             var percentage = expected.PercentageDifference(actual, segmentThreshold, scalingFactor);
 
@@ -25,8 +24,8 @@ namespace ImageSharp.Extension
         }
 
         public static float PercentageDifference<TColorA, TColorB>(this Image<TColorA> source, Image<TColorB> target, byte segmentThreshold = DefaultSegmentThreshold, int scalingFactor = DefaultScalingFactor)
-            where TColorA : struct, IPixel<TColorA>
-            where TColorB : struct, IPixel<TColorB>
+            where TColorA : unmanaged, IPixel<TColorA>
+            where TColorB : unmanaged, IPixel<TColorB>
         {
             // code adapted from https://www.codeproject.com/Articles/374386/Simple-image-comparison-in-NET
             DenseMatrix<byte> differences = GetDifferences(source, target, scalingFactor);
@@ -42,8 +41,8 @@ namespace ImageSharp.Extension
         }
 
         private static DenseMatrix<byte> GetDifferences<TColorA, TColorB>(Image<TColorA> source, Image<TColorB> target, int scalingFactor)
-            where TColorA : struct, IPixel<TColorA>
-            where TColorB : struct, IPixel<TColorB>
+            where TColorA : unmanaged, IPixel<TColorA>
+            where TColorB : unmanaged, IPixel<TColorB>
         {
             DenseMatrix<byte> differences = new DenseMatrix<byte>(scalingFactor, scalingFactor);
             DenseMatrix<byte> firstGray = source.GetGrayScaleValues(scalingFactor);
@@ -61,9 +60,9 @@ namespace ImageSharp.Extension
         }
 
         private static DenseMatrix<byte> GetGrayScaleValues<TColorA>(this Image<TColorA> source, int scalingFactor)
-            where TColorA : struct, IPixel<TColorA>
+            where TColorA : unmanaged, IPixel<TColorA>
         {
-            Rgba32 pixel = Rgba32.Black;
+            Rgba32 pixel = Rgba32.ParseHex("000000");
             var clonedImage = source.Clone();
             clonedImage.Mutate(context => context.Resize(scalingFactor, scalingFactor));
             clonedImage.Mutate(context => context.Grayscale());

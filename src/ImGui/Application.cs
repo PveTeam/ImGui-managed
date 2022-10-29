@@ -39,7 +39,7 @@ namespace ImGui
 
         internal static GUIContext ImGuiContext { get; } = new GUIContext();
 
-        internal static void InitSysDependencies()
+        internal static void InitSysDependencies(OSAbstraction.PlatformContext platformContextOverride = null)
         {
             Time.Init();
 
@@ -64,6 +64,12 @@ namespace ImGui
                 ImGui.Log.Enabled = true;
             }
             ImGui.Log.Init(Logger);
+
+            if (platformContextOverride != null)
+            {
+                PlatformContext = platformContextOverride;
+                return;
+            }
 
             // load platform context:
             //     platform-dependent implementation
@@ -99,17 +105,17 @@ namespace ImGui
 
         public static bool Initialized { get; private set; }
 
-        public static void Init()
+        public static void Init(OSAbstraction.PlatformContext platformContextOverride = null)
         {
-            InitSysDependencies();
+            InitSysDependencies(platformContextOverride);
 
 
             Initialized = true;
         }
 
-        public static void InitForLooper(Form mainForm)
+        public static void InitForLooper(Form mainForm, OSAbstraction.PlatformContext platformContextOverride = null)
         {
-            InitSysDependencies();
+            InitSysDependencies(platformContextOverride);
 
             MainForm = mainForm;
             mainForm.ID = IMGUI_VIEWPORT_DEFAULT_ID;

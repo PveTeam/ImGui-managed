@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace ImGui
 {
-    internal class VertexBuffer
+    public class VertexBuffer
     {
         private DrawVertex[] data;
 

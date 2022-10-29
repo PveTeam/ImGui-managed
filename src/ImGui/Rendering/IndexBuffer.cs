@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace ImGui
 {
-    internal class IndexBuffer
+    public class IndexBuffer
     {
         private DrawIndex[] data;
 

@@ -6,9 +6,9 @@ using ImGui.OSAbstraction.Window;
 
 namespace ImGui.OSAbstraction
 {
-    delegate ITextContext CTextContext(string text, string fontFamily, double fontSize, TextAlignment alignment);
+    public delegate ITextContext CTextContext(string text, string fontFamily, double fontSize, TextAlignment alignment);
 
-    abstract class PlatformContext
+    public abstract class PlatformContext
     {
         public CTextContext CreateTextContext;
         public Func<Point, Size, WindowTypes, IWindow> CreateWindow;

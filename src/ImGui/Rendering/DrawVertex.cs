@@ -3,7 +3,7 @@
 namespace ImGui
 {
     [DebuggerDisplay("{pos} {uv} {color}")]
-    internal struct DrawVertex
+    public struct DrawVertex
     {
         public Point pos;
         public Point uv;

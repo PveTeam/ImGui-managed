@@ -3,7 +3,7 @@
 namespace ImGui
 {
     [DebuggerDisplay("{Index}")]
-    internal struct DrawIndex
+    public struct DrawIndex
     {
         public int Index { get; set; }
 

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ImGui
 {
-    internal class Mesh
+    public class Mesh
     {
         private int vtxWritePosition;
         private int idxWritePosition;
